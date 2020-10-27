@@ -1,5 +1,13 @@
 @import './custom-properties.css';
 
+* {
+  border-collapse: collapse;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: top;
+}
+
 html {
   font-family: var(--font-family-sans);
   font-size: var(--font-base-size);
@@ -17,9 +25,20 @@ html,
 body,
 :global(#__next),
 :global(.container) {
-  height: 100%;
-}
+  height: 100%;     
+  margin: 0;        
+  padding: 0;  
+}    
+
+body.no-scroll{
+  overflow: hidden;
+}  
 
 :global(.content) {
   min-height: calc(100% - 84px - 218px);
 }
+
+a:focus{            
+  outline: none;        
+}    
+

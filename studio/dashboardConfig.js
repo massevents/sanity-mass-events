@@ -1,11 +1,5 @@
 export default {
   widgets: [
-    {
-      name: 'sanity-tutorials',
-      options: {
-        templateRepoId: 'sanity-io/sanity-template-nextjs-landing-pages'
-      }
-    },
     {name: 'structure-menu'},
     {
       name: 'project-info',
@@ -48,6 +42,33 @@ export default {
       name: 'document-list',
       options: {title: 'Recently edited', order: '_updatedAt desc', limit: 10, types: ['page']},
       layout: {width: 'medium'}
-    }
+    },
+    {
+      name: 'netlify',
+      options: {
+        title: 'My Netlify deploys',
+        sites: [
+          {
+            title: 'Sanity Studio',
+            apiId: '9221ef89-69bd-4962-850c-abdd4755707f',
+            buildHookId: '5f9859bc33993e012bf3808e',
+            name: 'sanity-mass-events-studio',
+          },
+          {
+            title: 'Website',
+            apiId: 'c8b6c001-d517-4c84-93e9-f52dc0469217',
+            buildHookId: '5f9859bca604ab00cf246f0e',
+            name: 'sanity-mass-events'
+          }
+        ]
+      }
+    },
+
+    {
+      name: 'sanity-tutorials',
+      options: {
+        templateRepoId: 'sanity-io/sanity-template-nextjs-landing-pages'
+      }
+    },
   ]
 }

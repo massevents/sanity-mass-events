@@ -4,6 +4,7 @@ import NextSeo from 'next-seo'
 import groq from 'groq'
 import imageUrlBuilder from '@sanity/image-url'
 import Layout from '../components/Layout'
+
 import client from '../client'
 import RenderSections from '../components/RenderSections'
 
@@ -36,7 +37,8 @@ class LandingPage extends Component {
     openGraphImage: PropTypes.any,
     content: PropTypes.any,
     config: PropTypes.any,
-    slug: PropTypes.any
+    slug: PropTypes.any,
+    mediaQueries: PropTypes.any
   }
 
   static async getInitialProps ({query}) {
@@ -86,7 +88,8 @@ class LandingPage extends Component {
       openGraphImage,
       content = [],
       config = {},
-      slug
+      slug,
+      mediaQueries
     } = this.props
 
     const openGraphImages = openGraphImage
@@ -127,7 +130,7 @@ class LandingPage extends Component {
       : []
 
     return (
-      <Layout config={config}>
+      <Layout config={config} mediaQueries={mediaQueries}>
         <NextSeo
           config={{
             title,
@@ -140,6 +143,7 @@ class LandingPage extends Component {
             noindex: disallowRobots
           }}
         />
+
         {content && <RenderSections sections={content} />}
       </Layout>
     )
