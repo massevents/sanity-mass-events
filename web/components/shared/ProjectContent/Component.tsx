@@ -44,8 +44,7 @@ export const ProjectContent = (props:IProps) => {
         {(!props.description || !props.description.customHtml) && (
           <Styled.Section>
             <Styled.Content>
-
-              <Styled.Image src={logoUrl!} alt={props.title!} />
+              { logoUrl && logoUrl !== "" && (<Styled.Image src={logoUrl!} alt={props.title!} /> ) }
 
               <Styled.Title>
                 <Title heading={props.description ? props.description.shortDescriptionTitle : ""} subheading="" />
@@ -112,12 +111,14 @@ export const ProjectContent = (props:IProps) => {
       <Styled.Container>
         <Styled.Section>
           <Styled.Content>
+
+          {props.sponsors && props.sponsors.partners && props.sponsors.partners.length > 0 && (
             <Styled.Title>
               <Title
                 heading={props.sponsors && props.sponsors.titleSponsors ? props.sponsors.titleSponsors : "Partners en Sponsoren"}
                 subheading=""
               />
-            </Styled.Title>
+            </Styled.Title>)}
             {props.sponsors && props.sponsors.partners &&
               props.sponsors.partners.map((e:any, index:number) => {
                 return (
@@ -139,9 +140,11 @@ export const ProjectContent = (props:IProps) => {
         </Styled.Section>
         <Styled.Section>
           <Styled.Content>
+          {props.activities && props.activities.activities && props.activities.activities.length > 0 && (
+
             <Styled.Title>
               <Title heading={props.activities && props.activities.titleActivities ? props.activities.titleActivities : 'Things we do!'} subheading="" />
-            </Styled.Title>
+            </Styled.Title> ) }
 
             <Styled.ActivitiesList>
               {props.activities && props.activities.activities && props.activities.activities.map((g:any, gIndex:number) => {

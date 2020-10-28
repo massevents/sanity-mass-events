@@ -87,8 +87,8 @@ export const NavDefault: React.FC<IProps> = ({ color, data, router }) => {
                   }}
                   as={`/${slug.current != "/" ? slug.current : ``}`}
                   prefetch
-                >
-                  <a title={`Bezoek ${slug}`} className={isActive ? "isActive" : ""}>
+                > 
+                  <a title={`Bezoek ${title}`} className={isActive ? "isActive" : ""}>
                     {title}
                   </a>
                 </Link>

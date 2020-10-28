@@ -51,7 +51,8 @@ export const ProjectBlock = ({ imagePosition, data }: IProps) => {
           <ProjectImage imageSrc={mediaUrl!} tiltDirection={TiltDirection[imagePosition]} />
         </Styled.Column>
         <Styled.Column imagePosition={imagePosition}>
-          <Styled.Image src={logoUrl!} alt={data.title!} /> 
+        { logoUrl && logoUrl !== "" && (<Styled.Image src={logoUrl!} alt={data.title!} /> ) }
+
           <Heading tag={HeadingEnum.Tag.h4} color={HeadingEnum.Color.primary}>
             {data.title!}
           </Heading>
