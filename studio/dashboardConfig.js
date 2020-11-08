@@ -63,12 +63,5 @@ export default {
         ]
       }
     },
-
-    {
-      name: 'sanity-tutorials',
-      options: {
-        templateRepoId: 'sanity-io/sanity-template-nextjs-landing-pages'
-      }
-    },
   ]
 }
