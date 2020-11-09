@@ -150,6 +150,7 @@ const Header = (props: IProps) => {
     <>
       <SectionDefault isAbsolute={isAbsolute}>
         <Styled.Container>
+          {process.env.NODE_ENV === 'development' && (<h2 className="watermark">DEVELOPMENT</h2>)}
           <Link
             href={{
               pathname: "/LandingPage",

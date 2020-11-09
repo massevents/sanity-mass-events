@@ -7,6 +7,13 @@
     "projectId": "n44llqu2",
     "dataset": "production"
   },
+  "env": {
+    "development": {
+      "api": {
+        "dataset": "development"
+      }
+    }
+  },
   "plugins": [
     "@sanity/base",
     "@sanity/components",
@@ -16,8 +23,7 @@
     "@sanity/desk-tool",
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
-    "dashboard-widget-netlify",
-    "@sanity/studio-hints"
+    "dashboard-widget-netlify"
   ],
   "parts": [
     {
@@ -31,10 +37,6 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./dashboardConfig.js"
-    },
-    {
-      "implements": "part:@sanity/default-layout/studio-hints-config",
-      "path": "./studioHintsConfig.js"
     }
   ]
 }

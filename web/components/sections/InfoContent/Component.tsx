@@ -33,7 +33,9 @@ const InfoContent = (props:IProps) => {
           <BlockContent blocks={props.leftContent} serializers={serializers} />
         </Styled.Section>
         {props.rightContent && (
-          <BlockContent blocks={props.rightContent} serializers={serializers} />
+        <Styled.Section>
+        <BlockContent blocks={props.rightContent} serializers={serializers} />
+        </Styled.Section>
         )}
       </Styled.Container>
     </SectionDefault>

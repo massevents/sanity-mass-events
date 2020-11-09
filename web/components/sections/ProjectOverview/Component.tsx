@@ -11,15 +11,16 @@ import { ButtonDefault } from "../../shared/Button/Component";
 // Enums
 import { ImagePosition } from "../../shared/ProjectBlock/Enums";
 import * as ColorEnum from "../../../enums/Color";
-import * as OverviewEnum from "./Enums";
 
 // Interfaces
 import { IProps } from "./Interfaces";
 
 // Style
 import * as Styled from "./Style";
+
 const ProjectOverview = (props: IProps) => {
-  const { overviewUrl, type, mediaQueries, headingTitle, headingSubTitle } = props;
+  const { button_enable, type, mediaQueries, headingTitle, headingSubTitle } = props;
+  
   const [projectsData, setProjectsData] = React.useState<any>(null);
   const [pageUrl, setPageUrl] = React.useState<any>(null);
 
@@ -27,8 +28,8 @@ const ProjectOverview = (props: IProps) => {
     const result = await client.fetch(`*[_type == "project"]|order(publishedAt desc)`);
     type === 'recent' ? setProjectsData(result.slice(0, 4)) : setProjectsData(result);
   }
-  async function fetchSpecificData() {
 
+  async function fetchSpecificData() {
     let data:any[] = [];
     type.projects &&
       type.projects.map((item: any) => {
@@ -40,10 +41,14 @@ const ProjectOverview = (props: IProps) => {
               const [dataToReplace] = response;
               data.push(dataToReplace);
 
+              if(data.length === type.projects.length){
+                setProjectsData(data);
+              }
             });
         }
       });
-      setProjectsData(data);
+
+
   }
 
   React.useEffect(() => {
@@ -53,25 +58,29 @@ const ProjectOverview = (props: IProps) => {
     if (type.condition === "projects") {
       projectsData === null && fetchSpecificData();
     }
-  }, [fetchData, fetchSpecificData]);
+  }, [type.projects]);
 
   React.useEffect(() => {
-    if (overviewUrl) {
+    if (button_enable && button_enable.condition !== 'button_object_no' && button_enable.button_object && button_enable.button_object.button_url) {
       if (pageUrl === null) {
         client
-          .fetch(`*[_type == "route" && _id == "${overviewUrl._ref}"]{...}`)
+          .fetch(`*[_type == "route" && _id == "${button_enable.button_object.button_url._ref}"]{...}`)
           .then((response: any) => {
             const [dataToSave] = response;
             setPageUrl(dataToSave);
           });
       }
     }
-  }, [pageUrl, overviewUrl]);
-
+  }, [pageUrl, button_enable]);
+  
   return (
     <Styled.Section>
+
       <Title heading={headingTitle} subheading={headingSubTitle} />
       <div>
+      {type && type.projects && type.projects.length === 0 && (
+          <p>Geen projecten gepland tot dusver!</p>
+        )}
         {projectsData &&
           projectsData.map((item: any, index: number) => {
             return (
@@ -85,13 +94,13 @@ const ProjectOverview = (props: IProps) => {
           })}
       </div>
 
-      {(type.condition === OverviewEnum.Type.recent || type.condition === OverviewEnum.Type.projects) && (
+      {pageUrl && (
         <Styled.ButtonContainer>
           <ButtonDefault
             href={`/${pageUrl && pageUrl.slug.current}`}
             color={ColorEnum.Color.primary}
           >
-            Bekijk alle projecten
+            {button_enable.button_object.button_label}
           </ButtonDefault>
         </Styled.ButtonContainer>
       )}

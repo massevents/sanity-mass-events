@@ -33,6 +33,11 @@ export default {
       type: 'string',
       title: 'Subtitel'
     },
+    {
+      name: 'ticketUrl',
+      type: 'string',
+      title: 'URL naar ticketshop'
+    },
 
     {
       name: 'description',
@@ -73,6 +78,12 @@ export default {
           of: [{ type: 'block' }]
         }
       ]
+    },
+
+    {
+      name: 'snippetDesc',
+      type: 'text',
+      title: 'Korte snippets voor overzichtspagina\'s'
     },
     {
       name: 'sponsors',
@@ -164,6 +175,11 @@ export default {
           name: 'logoSrc',
           type: 'image',
           title: 'Logoafbeelding'
+        },
+        {
+          name: 'posterSrc',
+          type: 'image',
+          title: 'Poster afbeelding'
         },
         {
           name: 'images',

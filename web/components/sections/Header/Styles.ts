@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 
   .hamburger-menu-enter {
     opacity: 0;
@@ -19,5 +20,14 @@ export const Container = styled.div`
   .hamburger-menu-exit-active {
     opacity: 0;
     transition: opacity 200ms 200ms;
+  }
+
+  .watermark{
+    opacity: 0.3;
+    position: absolute;
+    font-size: 60px;
+    right: 0;
+    top: 0;
+    pointer-events:none;
   }
 `

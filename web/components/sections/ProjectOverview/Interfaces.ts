@@ -9,6 +9,7 @@ export interface IProps {
     type: any;
     config: Config;
     mediaQueries: IMediaQueries;
+    button_enable: any;
   }
   export interface ProjectsEntity {
     _key: string;

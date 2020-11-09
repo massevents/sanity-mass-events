@@ -2,7 +2,7 @@ export const Meta = () => (
   <>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    {/* <meta name="subject" content="Kleine en grote evenementen met MASSive ambities" />
+    <meta name="subject" content="Kleine en grote evenementen met MASSive ambities" />
     <meta charSet="utf-8" />
     <link rel="icon" href="https://www.massevents.nl/meta/favicon.ico" />
     <link
@@ -81,6 +81,6 @@ export const Meta = () => (
       content="https://www.massevents.nl/meta/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#ffffff" />
-    <meta httpEquiv="Content-Language" content="nl" /> */}
+    <meta httpEquiv="Content-Language" content="nl" />
   </>
 );
