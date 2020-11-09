@@ -28,5 +28,6 @@ export const Container = styled.div`
     font-size: 60px;
     right: 0;
     top: 0;
+    pointer-events:none;
   }
 `

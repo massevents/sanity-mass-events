@@ -21,6 +21,13 @@ export const ProjectBlock = styled.section<IProps>`
     display: block;
     padding: 0;
   }
+
+  .fallback_description{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
 `
 
 export const Column = styled.section<IProps>`

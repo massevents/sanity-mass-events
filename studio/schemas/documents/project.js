@@ -74,6 +74,12 @@ export default {
         }
       ]
     },
+
+    {
+      name: 'snippetDesc',
+      type: 'text'
+      title: 'Korte snippets voor overzichtspagina\'s'
+    },
     {
       name: 'sponsors',
       type: 'object',
@@ -164,6 +170,11 @@ export default {
           name: 'logoSrc',
           type: 'image',
           title: 'Logoafbeelding'
+        },
+        {
+          name: 'posterSrc',
+          type: 'image',
+          title: 'Poster afbeelding'
         },
         {
           name: 'images',

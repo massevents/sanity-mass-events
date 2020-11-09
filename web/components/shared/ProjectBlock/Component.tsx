@@ -10,6 +10,7 @@ import { ProjectImage } from "../ProjectImage/Component";
 import { Heading } from "../Heading/Component";
 import { TiltDirection } from "../ProjectImage/Enums";
 import { ButtonDefault } from "../Button/Component";
+const BlockContent = require('@sanity/block-content-to-react')
 
 // Enums
 import * as HeadingEnum from "../Heading/Enums";
@@ -25,6 +26,16 @@ import imageUrlBuilder from "@sanity/image-url";
 export const ProjectBlock = ({ imagePosition, data }: IProps) => {
   const builder = imageUrlBuilder(client);
 
+  const serializers = {
+    types: {
+      code: (props:any) => (
+        <pre data-language={props.node.language}>
+          <code>{props.node.code}</code>
+        </pre>
+      )
+    }
+  }
+  
   function urlFor(source: any) {
     return builder.image(source);
   }
@@ -44,6 +55,8 @@ export const ProjectBlock = ({ imagePosition, data }: IProps) => {
 
   imagePosition = imagePosition ? imagePosition : ImagePosition.left;
 
+  const shortDesc = !data.snippetDesc && data.description && data.description.shortDescription && data.description.shortDescription[0] && data.description.shortDescription[0].children[0];
+
   return (
     data ? (
       <Styled.ProjectBlock imagePosition={imagePosition} data={data}>
@@ -56,7 +69,9 @@ export const ProjectBlock = ({ imagePosition, data }: IProps) => {
           <Heading tag={HeadingEnum.Tag.h4} color={HeadingEnum.Color.primary}>
             {data.title!}
           </Heading>
-          <p>{data.subTitle!}</p>
+          {data.snippetDesc && (<p>{ data.snipperDesc }</p>)}
+          {!data.snippetDesc && (<p className="fallback_description">{ shortDesc && shortDesc.text }</p>)}
+
           <ButtonDefault
             href={`project/${data.slug!.current!}`}
             color={ColorEnum.Color.light}
