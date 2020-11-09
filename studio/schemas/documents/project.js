@@ -77,7 +77,7 @@ export default {
 
     {
       name: 'snippetDesc',
-      type: 'text'
+      type: 'text',
       title: 'Korte snippets voor overzichtspagina\'s'
     },
     {

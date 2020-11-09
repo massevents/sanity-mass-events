@@ -69,7 +69,7 @@ export const ProjectBlock = ({ imagePosition, data }: IProps) => {
           <Heading tag={HeadingEnum.Tag.h4} color={HeadingEnum.Color.primary}>
             {data.title!}
           </Heading>
-          {data.snippetDesc && (<p>{ data.snipperDesc }</p>)}
+          {data.snippetDesc && (<p>{ data.snippetDesc }</p>)}
           {!data.snippetDesc && (<p className="fallback_description">{ shortDesc && shortDesc.text }</p>)}
 
           <ButtonDefault
