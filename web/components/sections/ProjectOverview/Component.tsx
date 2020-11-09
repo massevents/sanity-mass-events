@@ -11,7 +11,6 @@ import { ButtonDefault } from "../../shared/Button/Component";
 // Enums
 import { ImagePosition } from "../../shared/ProjectBlock/Enums";
 import * as ColorEnum from "../../../enums/Color";
-import * as OverviewEnum from "./Enums";
 
 // Interfaces
 import { IProps } from "./Interfaces";
@@ -22,7 +21,7 @@ import * as Styled from "./Style";
 const ProjectOverview = (props: IProps) => {
   const { button_enable, type, mediaQueries, headingTitle, headingSubTitle } = props;
   
-  const [projectsData, setProjectsData] = React.useState<any[]>(null);
+  const [projectsData, setProjectsData] = React.useState<any>(null);
   const [pageUrl, setPageUrl] = React.useState<any>(null);
 
   async function fetchData(type:any) {

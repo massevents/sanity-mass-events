@@ -12,6 +12,8 @@ interface IData {
   title: string;
   subTitle: string;
   slug?: { current: string; };
+  snippetDesc?: string;
+  description?: IDesc;
 }
 
 
@@ -37,12 +39,12 @@ interface IData {
 //   titleSponsors?: string
 // }
 
-// interface IDesc {
-//   shortDescription: string
-//   massEvents?: string
-//   event?: string
-//   customHtml?: string
-// }
+interface IDesc {
+  shortDescription: any
+  massEvents?: string
+  event?: string
+  customHtml?: string
+}
 
 // interface IMedia {
 //   logoSrc: string

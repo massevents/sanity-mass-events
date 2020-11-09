@@ -10,7 +10,6 @@ import { ProjectImage } from "../ProjectImage/Component";
 import { Heading } from "../Heading/Component";
 import { TiltDirection } from "../ProjectImage/Enums";
 import { ButtonDefault } from "../Button/Component";
-const BlockContent = require('@sanity/block-content-to-react')
 
 // Enums
 import * as HeadingEnum from "../Heading/Enums";
@@ -25,16 +24,6 @@ import imageUrlBuilder from "@sanity/image-url";
 
 export const ProjectBlock = ({ imagePosition, data }: IProps) => {
   const builder = imageUrlBuilder(client);
-
-  const serializers = {
-    types: {
-      code: (props:any) => (
-        <pre data-language={props.node.language}>
-          <code>{props.node.code}</code>
-        </pre>
-      )
-    }
-  }
   
   function urlFor(source: any) {
     return builder.image(source);
@@ -55,7 +44,7 @@ export const ProjectBlock = ({ imagePosition, data }: IProps) => {
 
   imagePosition = imagePosition ? imagePosition : ImagePosition.left;
 
-  const shortDesc = !data.snippetDesc && data.description && data.description.shortDescription && data.description.shortDescription[0] && data.description.shortDescription[0].children[0];
+  const shortDesc = data && data.snippetDesc === undefined && data.description && data.description.shortDescription && data.description.shortDescription[0] && data.description.shortDescription[0].children[0];
 
   return (
     data ? (

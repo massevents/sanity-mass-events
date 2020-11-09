@@ -133,7 +133,7 @@ class LandingPage extends Component {
           width: 1460,
           height: 1096,
           alt: 'Mass Events logo',
-        }
+        },
       ]
 
     return (

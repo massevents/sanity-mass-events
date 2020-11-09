@@ -36,6 +36,8 @@ export interface IProps {
   mediaQueries: IMediaQueries;
   activities?: Activities;
   description?: Description;
+  ticketUrl?: string;
+  snippetDesc?: string;
   disallowRobots?: boolean;
   includeInSitemap?: boolean;
   media?: Media;
