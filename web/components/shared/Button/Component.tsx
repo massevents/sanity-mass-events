@@ -9,12 +9,15 @@ import * as Styled from './Style'
 
 export const ButtonDefault: React.FC<IProps> = ({
   children,
+  className,
   color,
   disabled,
   href,
   onClickHandler,
   buttonType,
   type,
+  target,
+  title,
 }) => (
   <>
     {href && (
@@ -23,6 +26,9 @@ export const ButtonDefault: React.FC<IProps> = ({
         href={href}
         color={color}
         buttonType={buttonType}
+        target={target}
+        title={title}
+        className={className}
       >
         {children}
       </Styled.ButtonHref>

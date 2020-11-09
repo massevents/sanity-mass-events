@@ -244,9 +244,9 @@ const ProjectLayout = (props: IPropsBefore) => {
 
       {project.title !== "Loading" && (
         <SectionDefault>
-          <SocialMedia urls={socialMedia} />
+          <SocialMedia urls={socialMedia} ticketUrl={project.ticketUrl} />
           {project.description && <ProjectContent {...project} />}
-          <SocialMedia urls={socialMedia} />
+          <SocialMedia urls={socialMedia} ticketUrl={project.ticketUrl} />
         </SectionDefault>
       )}
 

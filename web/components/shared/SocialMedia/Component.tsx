@@ -6,18 +6,27 @@ import { IProps } from "./Interfaces";
 
 // Components
 import { FacebookIcon, InstagramIcon, LinkedInIcon } from "../SocialIcon/Component";
+import { ButtonDefault } from "../../shared/Button/Component";
 
 // Enums
 import * as IconEnum from "../SocialIcon/Enums";
+import * as ColorEnum from "../../../enums/Color";
 
 // Style
 import * as Styled from "./Style";
 
-export const SocialMedia: React.FC<IProps> = ({ urls }) => {
+export const SocialMedia: React.FC<IProps> = ({ urls, ticketUrl }) => {
   return (
     <Styled.Container>
       <Styled.Section>
         <ul>
+          {ticketUrl && (
+            <li>
+              <ButtonDefault className="light" href={ticketUrl} color={ColorEnum.Color.primary} title="Koop tickets nu!" target="_blank">
+                Koop tickets nu
+              </ButtonDefault>
+            </li>
+          )}
           {urls.facebook && (
             <li>
               <a href={urls.facebook} title="Bezoek de Facebook pagina">

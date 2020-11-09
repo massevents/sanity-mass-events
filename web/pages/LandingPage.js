@@ -127,7 +127,14 @@ class LandingPage extends Component {
           alt: title
         }
       ]
-      : []
+      : [
+        {
+          url: 'http://www.massevents.nl/mass_events.jpg',
+          width: 1460,
+          height: 1096,
+          alt: 'Mass Events logo',
+        }
+      ]
 
     return (
       <Layout config={config} mediaQueries={mediaQueries}>

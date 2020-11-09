@@ -33,6 +33,11 @@ export default {
       type: 'string',
       title: 'Subtitel'
     },
+    {
+      name: 'ticketUrl',
+      type: 'string',
+      title: 'URL naar ticketshop'
+    },
 
     {
       name: 'description',

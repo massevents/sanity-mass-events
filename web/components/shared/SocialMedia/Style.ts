@@ -34,7 +34,7 @@ export const Section = styled.div`
       list-style: none;
       margin: 0 0 0 2em;
 
-      a {
+      a:not(.light) {
         color: ${Colors.brand.dark};
         padding-bottom: 0.75em;
         position: relative;
@@ -69,6 +69,9 @@ export const Section = styled.div`
           }
         }
       }
+
+      
+
     }
   }
 `
