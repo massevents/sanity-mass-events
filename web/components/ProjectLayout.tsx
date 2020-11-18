@@ -204,6 +204,7 @@ const ProjectLayout = (props: IPropsBefore) => {
     linkedin: project.socialMedia ? project.socialMedia.linkedinUrl : "",
     instagram: project.socialMedia ? project.socialMedia.instagramUrl : "",
     website: project.socialMedia ? project.socialMedia.websiteUrl : "",
+    spotify: project.socialMedia ? project.socialMedia.spotifyUrl : "",
   };
 
   return (
@@ -246,9 +247,9 @@ const ProjectLayout = (props: IPropsBefore) => {
 
       {project.title !== "Loading" && (
         <SectionDefault>
-          <SocialMedia urls={socialMedia} ticketUrl={project.ticketUrl} />
+          <SocialMedia urls={socialMedia} ticketUrl={project.ticketUrl} ticketUrlText={project.ticketUrlText} />
           {project.description && <ProjectContent {...project} />}
-          <SocialMedia urls={socialMedia} ticketUrl={project.ticketUrl} />
+          <SocialMedia urls={socialMedia} ticketUrl={project.ticketUrl} ticketUrlText={project.ticketUrlText} />
         </SectionDefault>
       )}
 

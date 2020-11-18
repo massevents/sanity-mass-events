@@ -9,3 +9,7 @@ export const ButtonContainer = styled.div`
 export const Section = styled(SectionDefault)`
     margin: 0;
 `
+
+export const PosterWrapper = styled.div`
+    display: flex;
+`

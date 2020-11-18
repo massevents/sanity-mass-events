@@ -1,8 +1,8 @@
 // Base
 import React from "react";
 import Carousel from "nuka-carousel";
-const BlockContent = require('@sanity/block-content-to-react')
-import client from '../../../client'
+const BlockContent = require("@sanity/block-content-to-react");
+import client from "../../../client";
 
 // Components
 import { Title } from "../Title/Component";
@@ -19,24 +19,26 @@ import * as HeadingEnum from "../Heading/Enums";
 import * as Styled from "./Style";
 
 // Sanity
-import imageUrlBuilder from '@sanity/image-url';
+import imageUrlBuilder from "@sanity/image-url";
 
-export const ProjectContent = (props:IProps) => {
+export const ProjectContent = (props: IProps) => {
   const serializers = {
     types: {
-      code: (props:any) => (
+      code: (props: any) => (
         <pre data-language={props.node.language}>
           <code>{props.node.code}</code>
         </pre>
-      )
-    }
-  }
+      ),
+    },
+  };
   const builder = imageUrlBuilder(client);
   function urlFor(source: any) {
-    return builder.image(source)
+    return builder.image(source);
   }
 
-  const logoUrl = urlFor(props && props.media!.logoSrc!).height(50).url();
+  const logoUrl = urlFor(props && props.media!.logoSrc!)
+    .height(50)
+    .url();
 
   return (
     <>
@@ -44,36 +46,45 @@ export const ProjectContent = (props:IProps) => {
         {(!props.description || !props.description.customHtml) && (
           <Styled.Section>
             <Styled.Content>
-              { logoUrl && logoUrl !== "" && (<Styled.Image src={logoUrl!} alt={props.title!} /> ) }
+              {logoUrl && logoUrl !== "" && <Styled.Image src={logoUrl!} alt={props.title!} />}
 
               <Styled.Title>
-                <Title heading={props.description ? props.description.shortDescriptionTitle : ""} subheading="" />
+                <Title
+                  heading={props.description ? props.description.shortDescriptionTitle : ""}
+                  subheading=""
+                />
               </Styled.Title>
 
-              <BlockContent blocks={props.description && props.description.shortDescription} serializers={serializers} />
-
+              <BlockContent
+                blocks={props.description && props.description.shortDescription}
+                serializers={serializers}
+              />
             </Styled.Content>
             <Styled.Content>
               <Styled.Title>
-                <Title heading={props.description ? props.description.massEventsTitle : ""} subheading="" />
+                <Title
+                  heading={props.description ? props.description.massEventsTitle : ""}
+                  subheading=""
+                />
               </Styled.Title>
-              <BlockContent blocks={props.description && props.description.massEvents} serializers={serializers} />
-
+              <BlockContent
+                blocks={props.description && props.description.massEvents}
+                serializers={serializers}
+              />
             </Styled.Content>
           </Styled.Section>
         )}
 
-        {(props.description && props.description.customHtml) && (
+        {props.description && props.description.customHtml && (
           <Styled.Section>
             <Styled.Content>
               <Styled.Image src={logoUrl!} alt={props.title!} />
               <BlockContent blocks={props.description.customHtml} serializers={serializers} />
-
             </Styled.Content>
           </Styled.Section>
         )}
 
-{(!props.description || !props.description.customHtml) && (
+        {(!props.description || !props.description.customHtml) && (
           <Styled.Section className="section__overflow-hidden">
             <Styled.CarouselContainer>
               <Styled.Title>
@@ -93,14 +104,15 @@ export const ProjectContent = (props:IProps) => {
                   autoplay={true}
                   wrapAround={true}
                 >
-                  {props.media && props.media.images.map((e:any, index:number) => {
-                    const src = urlFor(e).width(960).url();
-                    return (
-                      <Styled.ImageContainer key={index}>
-                        <img src={src!} />
-                      </Styled.ImageContainer>
-                    );
-                  })}
+                  {props.media &&
+                    props.media.images.map((e: any, index: number) => {
+                      const src = urlFor(e).width(960).url();
+                      return (
+                        <Styled.ImageContainer key={index}>
+                          <img src={src!} />
+                        </Styled.ImageContainer>
+                      );
+                    })}
                 </Carousel>
               </Styled.PhotoContainer>
               <SwipeIcon />
@@ -111,16 +123,21 @@ export const ProjectContent = (props:IProps) => {
       <Styled.Container>
         <Styled.Section>
           <Styled.Content>
-
-          {props.sponsors && props.sponsors.partners && props.sponsors.partners.length > 0 && (
-            <Styled.Title>
-              <Title
-                heading={props.sponsors && props.sponsors.titleSponsors ? props.sponsors.titleSponsors : "Partners en Sponsoren"}
-                subheading=""
-              />
-            </Styled.Title>)}
-            {props.sponsors && props.sponsors.partners &&
-              props.sponsors.partners.map((e:any, index:number) => {
+            {props.sponsors && props.sponsors.partners && props.sponsors.partners.length > 0 && (
+              <Styled.Title>
+                <Title
+                  heading={
+                    props.sponsors && props.sponsors.titleSponsors
+                      ? props.sponsors.titleSponsors
+                      : "Partners en Sponsoren"
+                  }
+                  subheading=""
+                />
+              </Styled.Title>
+            )}
+            {props.sponsors &&
+              props.sponsors.partners &&
+              props.sponsors.partners.map((e: any, index: number) => {
                 return (
                   <React.Fragment key={`partnergroup-${index}`}>
                     {e.type != "all" && (
@@ -129,7 +146,7 @@ export const ProjectContent = (props:IProps) => {
                       </Heading>
                     )}
                     <Styled.SponsorList>
-                      {e.sponsors.map((f:any, fIndex:number) => {
+                      {e.sponsors.map((f: any, fIndex: number) => {
                         return <li key={`sponsor-${fIndex}`}>{f}</li>;
                       })}
                     </Styled.SponsorList>
@@ -140,16 +157,27 @@ export const ProjectContent = (props:IProps) => {
         </Styled.Section>
         <Styled.Section>
           <Styled.Content>
-          {props.activities && props.activities.activities && props.activities.activities.length > 0 && (
-
-            <Styled.Title>
-              <Title heading={props.activities && props.activities.titleActivities ? props.activities.titleActivities : 'Things we do!'} subheading="" />
-            </Styled.Title> ) }
+            {props.activities &&
+              props.activities.activities &&
+              props.activities.activities.length > 0 && (
+                <Styled.Title>
+                  <Title
+                    heading={
+                      props.activities && props.activities.titleActivities
+                        ? props.activities.titleActivities
+                        : "Things we do!"
+                    }
+                    subheading=""
+                  />
+                </Styled.Title>
+              )}
 
             <Styled.ActivitiesList>
-              {props.activities && props.activities.activities && props.activities.activities.map((g:any, gIndex:number) => {
-                return <li key={`activity-${gIndex}`}>{g}</li>;
-              })}
+              {props.activities &&
+                props.activities.activities &&
+                props.activities.activities.map((g: any, gIndex: number) => {
+                  return <li key={`activity-${gIndex}`}>{g}</li>;
+                })}
             </Styled.ActivitiesList>
           </Styled.Content>
         </Styled.Section>

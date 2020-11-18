@@ -5,7 +5,7 @@ import React from "react";
 import { IProps } from "./Interfaces";
 
 // Components
-import { FacebookIcon, InstagramIcon, LinkedInIcon } from "../SocialIcon/Component";
+import { FacebookIcon, InstagramIcon, LinkedInIcon, SpotifyIcon } from "../SocialIcon/Component";
 import { ButtonDefault } from "../../shared/Button/Component";
 
 // Enums
@@ -15,7 +15,8 @@ import * as ColorEnum from "../../../enums/Color";
 // Style
 import * as Styled from "./Style";
 
-export const SocialMedia: React.FC<IProps> = ({ urls, ticketUrl }) => {
+export const SocialMedia: React.FC<IProps> = ({ urls, ticketUrl, ticketUrlText }) => {
+  console.log(urls);
   return (
     <Styled.Container>
       <Styled.Section>
@@ -23,7 +24,7 @@ export const SocialMedia: React.FC<IProps> = ({ urls, ticketUrl }) => {
           {ticketUrl && (
             <li>
               <ButtonDefault className="light" href={ticketUrl} color={ColorEnum.Color.primary} title="Koop tickets nu!" target="_blank">
-                Koop tickets nu
+                { ticketUrlText || 'Koop tickets nu' }
               </ButtonDefault>
             </li>
           )}
@@ -45,6 +46,13 @@ export const SocialMedia: React.FC<IProps> = ({ urls, ticketUrl }) => {
             <li>
               <a title="Bezoek de LinkedIn pagina" href={urls.linkedin}>
                 <LinkedInIcon color={IconEnum.Color.dark} />
+              </a>
+            </li>
+          )}{" "}
+          {urls.spotify && (
+            <li>
+              <a title="Bezoek de Spotify playlist" href={urls.spotify}>
+                <SpotifyIcon color={IconEnum.Color.dark} />
               </a>
             </li>
           )}{" "}

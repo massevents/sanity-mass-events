@@ -29,6 +29,7 @@ export default {
     },
     {
       title: 'External link',
+      description: 'Don\'t forget to add a http(s)://',
       name: 'link',
       type: 'url',
       fieldset: 'link',
