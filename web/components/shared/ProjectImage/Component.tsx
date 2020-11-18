@@ -7,6 +7,6 @@ import * as Styled from './Style'
 
 export const ProjectImage: React.FC<IProps> = ({ tiltDirection, imageSrc, format }) => (
   <Styled.Wrapper>
-    <Styled.ProjectImage imageSrc={imageSrc} tiltDirection={format && format === 'poster' ? TiltDirection.straight : tiltDirection} />
+    <Styled.ProjectImage imageSrc={imageSrc} tiltDirection={format === 'poster' ? TiltDirection.straight : tiltDirection} />
   </Styled.Wrapper>
 )

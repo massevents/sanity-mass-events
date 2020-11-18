@@ -8,13 +8,11 @@ import { IProps } from "./Interfaces";
 // Components
 import { ProjectImage } from "../ProjectImage/Component";
 import { Heading } from "../Heading/Component";
-import { TiltDirection } from "../ProjectImage/Enums";
 import { ButtonDefault } from "../Button/Component";
 
 // Enums
 import * as HeadingEnum from "../Heading/Enums";
 import * as ColorEnum from "../../../enums/Color";
-import { ImagePosition } from "./Enums";
 
 // Styles
 import * as Styled from "./Style";
@@ -22,7 +20,7 @@ import * as Styled from "./Style";
 // Sanity
 import imageUrlBuilder from "@sanity/image-url";
 
-export const ProjectBlockPoster = ({ imagePosition, data }: IProps) => {
+export const ProjectBlockPoster = ({ data }: IProps) => {
   const builder = imageUrlBuilder(client);
   
   function urlFor(source: any) {
@@ -42,7 +40,7 @@ export const ProjectBlockPoster = ({ imagePosition, data }: IProps) => {
     data ? (
       <Styled.ProjectBlock data={data}>
         <Styled.Column>
-          <ProjectImage imageSrc={mediaUrl!} format="poster" tiltDirection={TiltDirection[imagePosition]} />
+          <ProjectImage imageSrc={mediaUrl!} format="poster" />
         </Styled.Column>
         <Styled.Column>
 

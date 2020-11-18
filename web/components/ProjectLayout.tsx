@@ -37,6 +37,7 @@ export interface IProps {
   activities?: Activities;
   description?: Description;
   ticketUrl?: string;
+  ticketUrlText?:  string;
   snippetDesc?: string;
   disallowRobots?: boolean;
   includeInSitemap?: boolean;
@@ -130,6 +131,7 @@ export interface SocialMedia {
   instagramUrl: string;
   linkedinUrl: string;
   websiteUrl: string;
+  spotifyUrl: string;
 }
 export interface Sponsors {
   partners?: PartnersEntity[] | null;

@@ -105,7 +105,6 @@ const ProjectOverview = (props: IProps) => {
             {projectsData.map((item: any, index: number) => {
               return (
                 <ProjectBlockPoster
-                  imagePosition={ImagePosition.right}
                   key={`project-${index}`}
                   data={item}
                   mediaQueries={mediaQueries}

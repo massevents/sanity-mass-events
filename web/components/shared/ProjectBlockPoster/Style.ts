@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import { IProps } from './Interfaces'
 
-import { ImagePosition } from './Enums'
 
 import { Dimensions } from '../../global/Theme'
 

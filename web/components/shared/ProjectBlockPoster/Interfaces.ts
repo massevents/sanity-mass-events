@@ -1,4 +1,3 @@
-import { ImagePosition } from './Enums'
 import { IMediaQueries } from '../../../interfaces/IMediaQueries'
 
 export interface IProps {
@@ -7,7 +6,7 @@ export interface IProps {
 }
   
 interface IData {
-  media?: { imageSrc: string; logoSrc: string };
+  media?: { imageSrc: string; logoSrc: string; posterSrc: string; };
   title: string;
   subTitle: string;
   slug?: { current: string; };

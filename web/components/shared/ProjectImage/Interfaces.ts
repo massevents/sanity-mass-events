@@ -1,7 +1,7 @@
 import { TiltDirection } from './Enums'
 
 export interface IProps {
-  tiltDirection: TiltDirection
+  tiltDirection?: TiltDirection
   imageSrc: string
   format?: string
 }
