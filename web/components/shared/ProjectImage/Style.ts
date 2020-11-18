@@ -9,14 +9,14 @@ export const ProjectImage = styled.picture<IProps>`
   border-radius: 4px;
   display: block;
   transform: rotate(
-    ${props => (props.tiltDirection === TiltDirection.right ? '4deg' : '-4deg')}
+    ${props => props.tiltDirection === TiltDirection.straight ? '0deg' : (props.tiltDirection === TiltDirection.right ? '4deg' : '-4deg')}
   );
   width: 100%;
 
   &::after {
     content: '';
     display: block;
-    padding-top: 75%;
+    padding-top: ${props => props.tiltDirection === TiltDirection.straight ? '141%' : '75%'};
   }
 `
 

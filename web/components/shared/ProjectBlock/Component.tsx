@@ -42,17 +42,16 @@ export const ProjectBlock = ({ imagePosition, data }: IProps) => {
     }
   }, [urlFor]);
 
-  imagePosition = imagePosition ? imagePosition : ImagePosition.left;
 
   const shortDesc = data && data.snippetDesc === undefined && data.description && data.description.shortDescription && data.description.shortDescription[0] && data.description.shortDescription[0].children[0];
 
   return (
     data ? (
-      <Styled.ProjectBlock imagePosition={imagePosition} data={data}>
-        <Styled.Column imagePosition={imagePosition}>
-          <ProjectImage imageSrc={mediaUrl!} tiltDirection={TiltDirection[imagePosition]} />
+      <Styled.ProjectBlock imagePosition={imagePosition || ImagePosition.left} data={data}>
+        <Styled.Column imagePosition={imagePosition || ImagePosition.left}>
+          <ProjectImage imageSrc={mediaUrl!} format="projectblock" tiltDirection={TiltDirection[imagePosition || ImagePosition.left]} />
         </Styled.Column>
-        <Styled.Column imagePosition={imagePosition}>
+        <Styled.Column imagePosition={imagePosition || ImagePosition.left}>
         { logoUrl && logoUrl !== "" && (<Styled.Image src={logoUrl!} alt={data.title!} /> ) }
 
           <Heading tag={HeadingEnum.Tag.h4} color={HeadingEnum.Color.primary}>

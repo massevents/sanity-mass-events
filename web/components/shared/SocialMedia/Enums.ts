@@ -3,4 +3,5 @@ export enum Type {
   Instagram = 'Instagram',
   LinkedIn = 'LinkedIn',
   Website = 'Website',
+  Spotify = 'Spotify',
 }

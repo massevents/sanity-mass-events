@@ -38,6 +38,11 @@ export default {
       type: 'string',
       title: 'URL naar ticketshop'
     },
+    {
+      name: 'ticketUrlText',
+      type: 'string',
+      title: 'Tekst op button naar ticketshop'
+    },
 
     {
       name: 'description',
@@ -243,6 +248,11 @@ export default {
           name: 'linkedinUrl',
           type: 'string',
           title: 'Linkedin Url'
+        },
+        {
+          name: 'spotifyUrl',
+          type: 'string',
+          title: 'Spotify Url'
         },
 
         {

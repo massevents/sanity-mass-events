@@ -59,6 +59,19 @@ export default {
         }
       ]
     },
+
+    {
+      name: 'format',
+      type: 'string',
+      title: 'How do you wanna show it?',
+      options: {
+        list: [
+          'poster', 'projectblock'
+        ],
+        layout: 'radio',
+        direction: 'horizontal'
+      }
+    },
     {
       title: 'Do we need a button?',
       name: 'button_enable',
