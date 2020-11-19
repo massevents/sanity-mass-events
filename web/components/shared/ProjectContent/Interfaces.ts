@@ -14,6 +14,7 @@ export interface IProps {
   slug: Slug;
   socialMedia?: SocialMedia;
   sponsors?: Sponsors;
+  sponsorObjects?: any;
   subTitle: string;
   title: string;
 }

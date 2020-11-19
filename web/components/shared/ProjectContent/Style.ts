@@ -67,11 +67,28 @@ export const SponsorList = styled.ul`
   margin: 0 0 2em;
   padding: 0;
 
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+
   li{
     background-color: ${Colors.brand.neutral};
     display: inline-block;
     margin: 5px 10px 5px 0;
     padding: 5px; 
+
+    margin: 0 0 2em;
+    margin-right: 1em;
+
+    &:hover{
+    background-color: ${Colors.brand.grey};
+
+    }
+
+    &.no-bg{
+      background-color: transparent;
+    }
   }
 `
 
