@@ -24,6 +24,7 @@ export interface Sponsor {
   title: string;
   slug?: Slug;
 }
+
 export interface ImageOrOpenGraphImage {
   _type: string;
   asset: PageOrFrontpageOrAsset;
