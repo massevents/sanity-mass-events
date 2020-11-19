@@ -16,7 +16,6 @@ import * as ColorEnum from "../../../enums/Color";
 import * as Styled from "./Style";
 
 export const SocialMedia: React.FC<IProps> = ({ urls, ticketUrl, ticketUrlText }) => {
-  console.log(urls);
   return (
     <Styled.Container>
       <Styled.Section>

@@ -8,6 +8,7 @@ import client from "../../../client";
 import { Title } from "../Title/Component";
 import { SwipeIcon } from "../SwipeIcon/Component";
 import { Heading } from "../Heading/Component";
+import { Sponsor } from "../Sponsor/Component";
 
 // Interfaces
 import { IProps } from "./Interfaces";
@@ -40,6 +41,8 @@ export const ProjectContent = (props: IProps) => {
     .height(50)
     .url();
 
+
+    console.log(props);
   return (
     <>
       <Styled.Container>
@@ -123,7 +126,8 @@ export const ProjectContent = (props: IProps) => {
       <Styled.Container>
         <Styled.Section>
           <Styled.Content>
-            {props.sponsors && props.sponsors.partners && props.sponsors.partners.length > 0 && (
+            { ((props.sponsors && props.sponsors.partners && props.sponsors.partners.length > 0) || 
+             ( props.sponsorObjects && props.sponsorObjects.partners && props.sponsorObjects.partners.length > 0 )) && (
               <Styled.Title>
                 <Title
                   heading={
@@ -137,6 +141,7 @@ export const ProjectContent = (props: IProps) => {
             )}
             {props.sponsors &&
               props.sponsors.partners &&
+              !props.sponsorObjects &&
               props.sponsors.partners.map((e: any, index: number) => {
                 return (
                   <React.Fragment key={`partnergroup-${index}`}>
@@ -148,6 +153,25 @@ export const ProjectContent = (props: IProps) => {
                     <Styled.SponsorList>
                       {e.sponsors.map((f: any, fIndex: number) => {
                         return <li key={`sponsor-${fIndex}`}>{f}</li>;
+                      })}
+                    </Styled.SponsorList>
+                  </React.Fragment>
+                );
+              })}
+
+            {props.sponsorObjects &&
+              props.sponsorObjects.partners &&
+              props.sponsorObjects.partners.map((e: any, index: number) => {
+                return (
+                  <React.Fragment key={`partnergroup-${index}`}>
+                    {e.type != "all" && (
+                      <Heading color={HeadingEnum.Color.dark} tag={HeadingEnum.Tag.h6}>
+                        {e.type}
+                      </Heading>
+                    )}
+                    <Styled.SponsorList>
+                      {e.sponsors.map((f: any, fIndex: number) => {
+                        return <Sponsor key={`sponsor-${fIndex}`} _ref={f._ref} sponsorType={e.sponsorType} className={e.sponsorType === 'photo' ? `no-bg` : ``}></Sponsor>;
                       })}
                     </Styled.SponsorList>
                   </React.Fragment>

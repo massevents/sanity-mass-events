@@ -8,6 +8,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import page from './documents/page'
 import route from './documents/route'
 import project from './documents/project'
+import sponsor from './documents/sponsor'
 import teammember from './documents/teammember'
 import siteConfig from './documents/siteConfig'
 
@@ -64,6 +65,7 @@ export default createSchema({
     route,
     simplePortableText,
     siteConfig,
+    sponsor,
     TeamCarousel,
     teammember,
     textSection,
