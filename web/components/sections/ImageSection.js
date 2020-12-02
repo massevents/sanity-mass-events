@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import PropTypes from "prop-types";
 import imageUrlBuilder from "@sanity/image-url";
 import styles from "./ImageSection.module.css";
@@ -9,20 +10,23 @@ import Cta from "../Cta";
 const builder = imageUrlBuilder(client);
 
 function ImageSection(props) {
+
   const { heading, label, text, image, cta } = props;
+  const isPage = cta && cta.route && cta.route.slug && cta.route.slug.current;
+  const isProject = cta && cta.project && cta.project.slug && cta.project.slug.current;
 
   if (!image) {
     return null;
   }
-
-  if (cta && cta.route && cta.route.slug && cta.route.slug.current) {
+  
+  if (isPage || isProject) {
     return (
       <Link
         href={{
-          pathname: "/LandingPage",
-          query: { slug: cta.route.slug.current },
+          pathname: isPage ? "/LandingPage" : "/project",
+          query: { slug: isPage ? cta.route.slug.current : cta.project.slug.current },
         }}
-        as={`/${cta.route.slug.current}`}
+        as={`/${isPage ? cta.route.slug.current : cta.project.slug.current}`}
       >
         <a>
           <div className={styles.root}>

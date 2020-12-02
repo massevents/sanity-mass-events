@@ -4,7 +4,21 @@ import Link from 'next/link'
 import styles from './Cta.module.css'
 
 function cta (props) {
-  const {title, route, link} = props
+  const {title, route, link, project} = props
+
+  if (project && project.slug && project.slug.current) {
+    return (
+      <Link
+        href={{
+          pathname: '/project',
+          query: {slug: project.slug.current}
+        }}
+        as={`/${project.slug.current}`}
+      >
+        <a className={styles.button}>{title}</a>
+      </Link>
+    )
+  }
 
   if (route && route.slug && route.slug.current) {
     return (
@@ -34,6 +48,11 @@ function cta (props) {
 cta.propTypes = {
   title: PropTypes.string.isRequired,
   route: PropTypes.shape({
+    slug: PropTypes.shape({
+      current: PropTypes.string
+    })
+  }),
+  project: PropTypes.shape({
     slug: PropTypes.shape({
       current: PropTypes.string
     })

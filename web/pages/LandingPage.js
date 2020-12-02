@@ -17,11 +17,13 @@ const pageQuery = groq`
       ...,
       cta {
         ...,
-        route->
+        route->,
+        project->
       },
       ctas[] {
         ...,
-        route->
+        route->,
+        project->
       }
     }
   }
@@ -63,11 +65,13 @@ class LandingPage extends Component {
               ...,
               cta {
                 ...,
-                route->
+                route->,
+                project->
               },
               ctas[] {
                 ...,
-                route->
+                route->,
+                project->
               }
             }
           }

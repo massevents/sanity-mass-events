@@ -20,6 +20,14 @@ export default {
       type: 'string',
     },
     {
+      title: 'Project page',
+      description: 'Use this to link between pages on the website',
+      name: 'project',
+      type: 'reference',
+      to: [{ type: 'project' }],
+      fieldset: 'link',
+    },
+    {
       title: 'Internal link',
       description: 'Use this to link between pages on the website',
       name: 'route',
