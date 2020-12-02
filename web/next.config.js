@@ -25,6 +25,15 @@ const projectQuery = `
   }
 }`;
 
+const newsQuery = `
+{
+  "news": *[_type == "news"] {
+    ...,
+    disallowRobot,
+    includeInSitemap,
+  }
+}`;
+
 const reduceRoutes = (obj, route) => {
   const { page = {}, slug = {} } = route;
   const { _createdAt, _updatedAt } = page;
@@ -52,6 +61,19 @@ const reduceProjects = (obj, route) => {
       slug: slug.current,
     },
     page: "/project",
+  };
+  return obj;
+};
+
+const reduceNews = (obj, route) => {
+  const { slug = {} } = route;
+  const { includeInSitemap, disallowRobot } = route;
+  const path = `/news/${route["slug"]["current"]}`;
+  obj[path] = {
+    query: {
+      slug: slug.current,
+    },
+    page: "/news",
   };
   return obj;
 };
@@ -84,7 +106,18 @@ module.exports = withCSS({
         return { ...nextRoutes, ...nextProjects };
       });
 
-      return projectRoutes;
+      const newsRoutes = client.fetch(newsQuery).then((res) => {
+        const { news = [] } = res;
+
+        const nextNews = {
+          // Routes imported from sanity
+          ...news.filter(({ slug }) => slug.current).reduce(reduceNews, {}),
+          // '/custom-page': {page: '/CustomPage'}
+        };
+        return { ...nextRoutes, ...projectRoutes, ...nextNews };
+      });
+
+      return newsRoutes;
     });
 
     return pageRoutes;

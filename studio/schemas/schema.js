@@ -8,6 +8,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import page from './documents/page'
 import route from './documents/route'
 import project from './documents/project'
+import news from './documents/news'
 import sponsor from './documents/sponsor'
 import teammember from './documents/teammember'
 import siteConfig from './documents/siteConfig'
@@ -30,6 +31,7 @@ import imageSection from './objects/imageSection'
 import textSection from './objects/textSection'
 import About from './objects/About'
 import ProjectOverview from './objects/ProjectOverview'
+import NewsOverview from './objects/NewsOverview'
 import TeamCarousel from './objects/TeamCarousel'
 import WorkTogether from './objects/WorkTogether'
 import Contact from './objects/Contact'
@@ -58,6 +60,8 @@ export default createSchema({
     JumboImage,
     JumboVideo,
     link,
+    news,
+    NewsOverview,
     page,
     portableText,
     ProjectOverview,
