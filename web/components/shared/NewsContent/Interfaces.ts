@@ -2,21 +2,21 @@
 import { IMediaQueries } from "../../../interfaces/IMediaQueries";
 
 export interface IProps {
+  author?: any;
   config: IConfig;
   children?: ChildrenEntity[] | null;
   mediaQueries: IMediaQueries;
-  activities?: Activities;
-  description?: Description;
+  description?: (MassEventsEntityOrShortDescriptionEntity)[] | null;
   disallowRobots?: boolean;
   includeInSitemap?: boolean;
   media?: Media;
   seo?: Seo;
   slug: Slug;
-  socialMedia?: SocialMedia;
-  sponsors?: Sponsors;
-  sponsorObjects?: any;
   subTitle: string;
   title: string;
+  _createdAt?: string;
+  _updatedAt?: string;
+
 }
 export interface IConfig {
   frontpage: PageOrFrontpageOrAsset;
@@ -47,18 +47,6 @@ export interface Slug {
   _type: string;
   current: string;
 }
-export interface Activities {
-  activities?: (string)[] | null;
-  titleActivities: string;
-}
-export interface Description {
-  massEvents?: (MassEventsEntityOrShortDescriptionEntity)[] | null;
-  massEventsTitle: string;
-  shortDescription?: (MassEventsEntityOrShortDescriptionEntity)[] | null;
-  shortDescriptionTitle: string;
-  customHtml?: any;
-
-}
 export interface MassEventsEntityOrShortDescriptionEntity {
   _key: string;
   _type: string;
@@ -76,8 +64,8 @@ export interface Media {
   imageSrc: BgImageOrImageSrcOrLogoSrcOrOpenGraphImage;
   images?: any;
   logoSrc: BgImageOrImageSrcOrLogoSrcOrOpenGraphImage;
-  projectHeader: ProjectHeader;
-  projectType: string;
+  newsHeader: NewsHeader;
+  newsType: string;
 }
 export interface BgImageOrImageSrcOrLogoSrcOrOpenGraphImage {
   _type: string;
@@ -88,27 +76,11 @@ export interface ImagesEntity {
   _type: string;
   asset: PageOrFrontpageOrAsset;
 }
-export interface ProjectHeader {
+export interface NewsHeader {
   bgImage: BgImageOrImageSrcOrLogoSrcOrOpenGraphImage;
   videoId: string;
 }
 export interface Seo {
   openGraphImage: BgImageOrImageSrcOrLogoSrcOrOpenGraphImage;
   description: string;
-}
-export interface SocialMedia {
-  facebookUrl: string;
-  instagramUrl: string;
-  linkedinUrl: string;
-  websiteUrl: string;
-}
-export interface Sponsors {
-  partners?: (PartnersEntity)[] | null;
-  titleSponsors: string;
-}
-export interface PartnersEntity {
-  _key: string;
-  _type: string;
-  sponsors?: (string)[] | null;
-  type: string;
 }

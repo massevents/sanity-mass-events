@@ -18,7 +18,7 @@ interface IData {
 
 
 
-// export interface IProject {
+// export interface INews {
 //   meta: IMeta
 //   description: IDesc
 //   media: IMedia

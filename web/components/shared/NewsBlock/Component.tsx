@@ -33,7 +33,6 @@ export const NewsBlock = ({ imagePosition, data }: IProps) => {
   }
 
   const [mediaUrl, setMediaUrl] = React.useState<string>("");
-  const [logoUrl, setLogoUrl] = React.useState<string>("");
 
   React.useEffect(() => {
     if (mediaUrl === "") {
@@ -62,7 +61,6 @@ export const NewsBlock = ({ imagePosition, data }: IProps) => {
         />
       </Styled.Column>
       <Styled.Column imagePosition={imagePosition || ImagePosition.left}>
-        {logoUrl && logoUrl !== "" && <Styled.Image src={logoUrl!} alt={data.title!} />}
 
         <Heading tag={HeadingEnum.Tag.h4} color={HeadingEnum.Color.primary}>
           {data.title!}

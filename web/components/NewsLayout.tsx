@@ -14,7 +14,6 @@ import { IMediaQueries } from "../interfaces/IMediaQueries";
 
 import { SectionDefault } from "./shared/SectionDefault/Component";
 import { NewsContent } from "./shared/NewsContent/Component";
-import { SocialMedia } from "./shared/SocialMedia/Component";
 import { FooterDefault } from "./shared/Footer/Component";
 
 import RenderSections from "./RenderSections";
@@ -33,20 +32,17 @@ export interface IPropsBefore {
 
 export interface IProps {
   config: IConfig;
+  content?: any;
   children?: ChildrenEntity[] | null;
   mediaQueries: IMediaQueries;
-  activities?: Activities;
-  description?: Description;
-  ticketUrl?: string;
-  ticketUrlText?: string;
+  description?: MassEventsEntityOrShortDescriptionEntity[] | null;
   snippetDesc?: string;
   disallowRobots?: boolean;
   includeInSitemap?: boolean;
   media?: Media;
   seo?: Seo;
   slug: Slug;
-  socialMedia?: SocialMedia;
-  sponsors?: Sponsors;
+  _updatedAt?: string;
   subTitle: string;
   title: string;
 }
@@ -78,17 +74,6 @@ export interface MainNavigationEntity {
 export interface Slug {
   _type: string;
   current: string;
-}
-export interface Activities {
-  activities?: string[] | null;
-  titleActivities: string;
-}
-export interface Description {
-  massEvents?: MassEventsEntityOrShortDescriptionEntity[] | null;
-  massEventsTitle: string;
-  shortDescription?: MassEventsEntityOrShortDescriptionEntity[] | null;
-  shortDescriptionTitle: string;
-  customHtml?: any;
 }
 export interface MassEventsEntityOrShortDescriptionEntity {
   _key: string;
@@ -126,23 +111,6 @@ export interface NewsHeader {
 export interface Seo {
   openGraphImage: BgImageOrImageSrcOrLogoSrcOrOpenGraphImage;
   description: string;
-}
-export interface SocialMedia {
-  facebookUrl: string;
-  instagramUrl: string;
-  linkedinUrl: string;
-  websiteUrl: string;
-  spotifyUrl: string;
-}
-export interface Sponsors {
-  partners?: PartnersEntity[] | null;
-  titleSponsors: string;
-}
-export interface PartnersEntity {
-  _key: string;
-  _type: string;
-  sponsors?: string[] | null;
-  type: string;
 }
 
 const NewsLayout = (props: IPropsBefore) => {
@@ -200,6 +168,7 @@ const NewsLayout = (props: IPropsBefore) => {
   const bgImageSrc =
     news.media && news.media.newsHeader && urlFor(news.media.newsHeader.bgImage).width(1024).url();
 
+
   return (
     <>
       <Head>
@@ -235,16 +204,16 @@ const NewsLayout = (props: IPropsBefore) => {
           <SectionDefault>{news.description && <NewsContent {...news} />}</SectionDefault>
           {news.content && <RenderSections sections={news.content} />}
 
-          <SectionDefault>
+          { news._updatedAt && (<SectionDefault>
             <small>
               Laatst gewijzigd op{" "}
               {new Intl.DateTimeFormat("nl-NL", {
                 year: "numeric",
                 month: "long",
                 day: "2-digit",
-              }).format(props.updatedAt)}
+              }).format(new Date(news._updatedAt))}
             </small>
-          </SectionDefault>
+          </SectionDefault>)}
         </>
       )}
 

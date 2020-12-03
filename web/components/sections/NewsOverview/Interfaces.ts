@@ -10,7 +10,6 @@ export interface IProps {
     config: Config;
     mediaQueries: IMediaQueries;
     button_enable: any;
-    format?: string;
   }
   export interface ProjectsEntity {
     _key: string;

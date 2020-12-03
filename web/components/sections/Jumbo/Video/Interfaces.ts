@@ -8,5 +8,6 @@ export interface IProps {
     headingSubTitle?: string
     mediaQueries: IMediaQueries
     isVisible?: boolean
+    startTime?: number
 }
 

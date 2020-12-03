@@ -14,37 +14,34 @@ const query = `
       _createdAt,
       _updatedAt
     }
-  }
-}`;
-const projectQuery = `
-{
+  },
   "projects": *[_type == "project"] {
     ...,
     disallowRobot,
     includeInSitemap,
-  }
-}`;
-
-const newsQuery = `
-{
+    _createdAt,
+    _updatedAt
+  },
   "news": *[_type == "news"] {
     ...,
     disallowRobot,
     includeInSitemap,
+    _createdAt,
+    _updatedAt
   }
 }`;
 
 const reduceRoutes = (obj, route) => {
   const { page = {}, slug = {} } = route;
   const { _createdAt, _updatedAt } = page;
-  const { includeInSitemap, disallowRobot } = route;
+  const { includeInSitemap, disallowRobots } = route;
   const path = route["slug"]["current"] === "/" ? "/" : `/${route["slug"]["current"]}`;
   obj[path] = {
     query: {
       slug: slug.current,
     },
     includeInSitemap,
-    disallowRobot,
+    disallowRobots,
     _createdAt,
     _updatedAt,
     page: "/LandingPage",
@@ -54,12 +51,16 @@ const reduceRoutes = (obj, route) => {
 
 const reduceProjects = (obj, route) => {
   const { slug = {} } = route;
-  const { includeInSitemap, disallowRobot } = route;
+  const { includeInSitemap, disallowRobots, _createdAt, _updatedAt } = route;
   const path = `/project/${route["slug"]["current"]}`;
   obj[path] = {
     query: {
       slug: slug.current,
     },
+    includeInSitemap,
+    disallowRobots,
+    _createdAt,
+    _updatedAt,
     page: "/project",
   };
   return obj;
@@ -67,12 +68,16 @@ const reduceProjects = (obj, route) => {
 
 const reduceNews = (obj, route) => {
   const { slug = {} } = route;
-  const { includeInSitemap, disallowRobot } = route;
+  const { includeInSitemap, disallowRobots, _createdAt, _updatedAt } = route;
   const path = `/news/${route["slug"]["current"]}`;
   obj[path] = {
     query: {
       slug: slug.current,
     },
+    includeInSitemap,
+    disallowRobots,
+    _createdAt,
+    _updatedAt,
     page: "/news",
   };
   return obj;
@@ -87,38 +92,20 @@ module.exports = withCSS({
   },
   exportPathMap: async function () {
     const pageRoutes = client.fetch(query).then((res) => {
-      const { routes = [] } = res;
+      const { routes = [],projects =[], news = [] } = res;
 
       const nextRoutes = {
-        // Routes imported from sanity
         ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {}),
-        // '/custom-page': {page: '/CustomPage'}
+        ...projects.filter(({ slug }) => slug.current).reduce(reduceProjects, {}),
+        ...news.filter(({ slug }) => slug.current).reduce(reduceNews, {}),
       };
 
-      const projectRoutes = client.fetch(projectQuery).then((res) => {
-        const { projects = [] } = res;
-
-        const nextProjects = {
-          // Routes imported from sanity
-          ...projects.filter(({ slug }) => slug.current).reduce(reduceProjects, {}),
-          // '/custom-page': {page: '/CustomPage'}
-        };
-        return { ...nextRoutes, ...nextProjects };
-      });
-
-      const newsRoutes = client.fetch(newsQuery).then((res) => {
-        const { news = [] } = res;
-
-        const nextNews = {
-          // Routes imported from sanity
-          ...news.filter(({ slug }) => slug.current).reduce(reduceNews, {}),
-          // '/custom-page': {page: '/CustomPage'}
-        };
-        return { ...nextRoutes, ...projectRoutes, ...nextNews };
-      });
-
-      return newsRoutes;
+      return nextRoutes;
     });
+
+    console.log(pageRoutes);
+
+    // MAKE SURE ALL FETCHES ARE DONE
 
     return pageRoutes;
   },

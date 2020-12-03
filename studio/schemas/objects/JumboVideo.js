@@ -17,7 +17,14 @@ export default {
       name: 'videoId',
       type: 'string',
       title: 'Video ID - Youtube (11 tekens)'
+    },
+    {
+      name: 'startTime',
+      type: 'number',
+      title: 'Video later laten beginnen in seconden - Kies niet te veel'
     }
+
+    
   ],
   preview: {
     select: {

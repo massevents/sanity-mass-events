@@ -20,7 +20,7 @@ import { IProps } from "./Interfaces";
 import * as Styled from "./Style";
 
 const NewsOverview = (props: IProps) => {
-  const { button_enable, type, mediaQueries, headingTitle, headingSubTitle, format } = props;
+  const { button_enable, type, mediaQueries, headingTitle, headingSubTitle } = props;
 
   const [newsData, setNewssData] = React.useState<any>(null);
   const [pageUrl, setPageUrl] = React.useState<any>(null);

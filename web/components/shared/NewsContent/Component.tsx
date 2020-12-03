@@ -7,14 +7,11 @@ import client from "../../../client";
 // Components
 import { Title } from "../Title/Component";
 import { SwipeIcon } from "../SwipeIcon/Component";
-import { Heading } from "../Heading/Component";
-import { Sponsor } from "../Sponsor/Component";
 
 // Interfaces
 import { IProps } from "./Interfaces";
 
 // Enums
-import * as HeadingEnum from "../Heading/Enums";
 
 // Styles
 import * as Styled from "./Style";
@@ -37,11 +34,9 @@ export const NewsContent = (props: IProps) => {
     return builder.image(source);
   }
 
-  console.log(props);
-
   return (
     <>
-      <Styled.Container>
+      {props._createdAt && (<Styled.Container>
         <Styled.Section>
           <Styled.Content>
             <p>
@@ -50,11 +45,11 @@ export const NewsContent = (props: IProps) => {
                 year: "numeric",
                 month: "long",
                 day: "2-digit",
-              }).format(props.createdAt)}
+              }).format(new Date(props._createdAt))}
             </p>
           </Styled.Content>
         </Styled.Section>
-      </Styled.Container>
+      </Styled.Container>)}
 
       <Styled.Container>
         <Styled.Section>

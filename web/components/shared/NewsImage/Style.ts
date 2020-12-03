@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import { IProps } from './Interfaces'
 
-import { TiltDirection } from './Enums'
 
 export const NewsImage = styled.picture<IProps>`
   background: url(${props => props.imageSrc}) center center / cover;
