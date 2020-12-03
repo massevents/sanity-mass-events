@@ -19,13 +19,15 @@
     "@sanity/default-login": "^2.0.0",
     "@sanity/desk-tool": "^2.0.0",
     "@sanity/studio-hints": "^2.0.0",
+    "@sanity/vision": "^2.0.9",
     "bcp47": "^1.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-icons": "^3.11.0",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.11",
-    "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
+    "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
+    "sanity-plugin-media": "^0.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

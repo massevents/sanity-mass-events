@@ -27,6 +27,7 @@ export default {
         { type: 'JumboVideo' },
         { type: 'JumboImage' },
         { type: 'ProjectOverview' },
+        { type: 'NewsOverview' },
         { type: 'TeamCarousel' },
         { type: 'WorkTogether' },
         { type: 'CityBackground' },

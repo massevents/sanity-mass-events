@@ -21,6 +21,7 @@ const JumboVideo = ({
   headingTitle,
   headingSubTitle,
   mediaQueries,
+  startTime,
 }:IProps) => {
   const [isLoaded, setIsLoaded] = React.useState(false)
 
@@ -36,6 +37,7 @@ const JumboVideo = ({
       mute: 1,
       playlist: videoId,
       showinfo: 0,
+      start: startTime ? startTime : 0
     },
     width: '100%',
   }
@@ -56,7 +58,7 @@ const JumboVideo = ({
     <section className={className}>
       <Styled.VideoContainer>
         <Styled.Video>
-          <YouTube videoId={videoId} opts={opts} onStateChange={showVideo} />
+          <YouTube videoId={videoId} opts={opts} onStateChange={showVideo} />   
           <Styled.Overlay />
           <Styled.OverlayLoading className={isLoaded ? `isLoaded` : ``}>
             {panels}
